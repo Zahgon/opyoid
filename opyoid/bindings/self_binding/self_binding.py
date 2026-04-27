@@ -15,12 +15,11 @@ class SelfBinding(Binding[InjectedT]):
 
     @property
     def target_type(self) -> Type[InjectedT]:
-        return self._target_type
+        pass
 
     @property
     def named(self) -> Optional[str]:
-        return self._named
+        pass
 
     def __repr__(self) -> str:
-        scope_string = f", scope={self.scope}" if self.scope != SingletonScope else ""
-        return f"{self.__class__.__name__}({self.target!r}{scope_string})"
+        pass

@@ -13,39 +13,39 @@ class Pep585TypeChecker:
     @staticmethod
     def is_list(target_type: Any) -> bool:
         """Returns True if target_type is List[<Any>] or list[Any]"""
-        return isinstance(target_type, (_GenericAlias, GenericAlias)) and bool(target_type.__origin__ == list)
+        pass
 
     @staticmethod
     def is_pep585_list(target_type: Any) -> bool:
         """Returns True if target_type is list[<Any>]"""
-        return isinstance(target_type, GenericAlias) and bool(target_type.__origin__ == list)
+        pass
 
     @staticmethod
     def is_set(target_type: Any) -> bool:
         """Returns True if target_type is Set[<Any>]"""
-        return isinstance(target_type, (_GenericAlias, GenericAlias)) and bool(target_type.__origin__ == set)
+        pass
 
     @staticmethod
     def is_tuple(target_type: Any) -> bool:
         """Returns True if target_type is Tuple[<Any>]"""
-        return isinstance(target_type, (_GenericAlias, GenericAlias)) and bool(target_type.__origin__ == tuple)
+        pass
 
     @staticmethod
     def is_provider(target_type: Any) -> bool:
         """Returns True if target_type is Provider[<Any>]"""
-        return isinstance(target_type, _GenericAlias) and target_type.__origin__ == Provider
+        pass
 
     @staticmethod
     def is_named(target_type: Any) -> bool:
         """Returns True if target_type is Named[<Any>]"""
-        return isinstance(target_type, type) and issubclass(target_type, Named)
+        pass
 
     @staticmethod
     def is_union(target_type: Any) -> bool:
         """Returns True if target_type is Union[<Any>, <Any>...] or Optional[<Any>]"""
-        return isinstance(target_type, _GenericAlias) and target_type.__origin__ == Union
+        pass
 
     @staticmethod
     def is_type(target_type: Any) -> bool:
         """Returns True if target_type is Type[<Any>]"""
-        return isinstance(target_type, (_GenericAlias, GenericAlias)) and bool(target_type.__origin__ == type)
+        pass

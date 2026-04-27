@@ -17,28 +17,15 @@ class ProviderBinding(Binding[InjectedT]):
     _named: Optional[str] = attr.ib(default=None, kw_only=True)
 
     def __attrs_post_init__(self) -> None:
-        if isinstance(self.bound_provider, Provider) and self.scope is not SingletonScope:
-            raise BindingError(f"Invalid binding: cannot set a scope to a provider instance, got {self.scope!r}")
-        if not isinstance(self.bound_provider, Provider) and not callable(self.bound_provider):
-            raise BindingError(
-                f"Invalid {self!r}: bound provider must be a Provider instance or subclass, or a method,"
-                f" got {self.bound_provider!r}"
-            )
+        pass
 
     @property
     def target_type(self) -> Union[Type[InjectedT], TypeVar]:
-        return self._target_type
+        pass
 
     @property
     def named(self) -> Optional[str]:
-        return self._named
+        pass
 
     def __repr__(self) -> str:
-        if isinstance(self.bound_provider, Provider):
-            provider_string = repr(self.bound_provider)
-        elif isinstance(self.bound_provider, type):
-            provider_string = get_class_full_name(self.bound_provider)
-        else:
-            provider_string = get_function_full_name(self.bound_provider)
-        scope_string = f", scope={self.scope}" if self.scope != SingletonScope else ""
-        return f"{self.__class__.__name__}({self.target!r} -> {provider_string}{scope_string})"
+        pass

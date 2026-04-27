@@ -14,11 +14,4 @@ class ProviderProviderFactory(ProviderFactory):
     """Returns the provider for a provider target by transforming a Provider into a FromInstanceProvider."""
 
     def create(self, context: InjectionContext[InjectedT]) -> Provider[InjectedT]:
-        if TypeChecker.is_provider(context.target.type):
-            new_target: Target[Any] = Target(
-                context.target.type.__args__[0],  # type: ignore[union-attr]
-                context.target.named,
-            )
-            new_context = context.get_child_context(new_target)
-            return FromInstanceProvider(cast(InjectedT, new_context.get_provider()))
-        raise IncompatibleProviderFactory
+        pass

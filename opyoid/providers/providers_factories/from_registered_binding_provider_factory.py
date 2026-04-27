@@ -23,13 +23,7 @@ class FromRegisteredBindingProviderFactory:
     logger = logging.getLogger(__name__)
 
     def __init__(self) -> None:
-        self._binding_to_provider_adapters: List[BindingToProviderAdapter] = [
-            SelfBindingToProviderAdapter(),
-            InstanceBindingToProviderAdapter(),
-            ClassBindingToProviderAdapter(),
-            ProviderBindingToProviderAdapter(),
-            MultiBindingToProviderAdapter(self),
-        ]
+        pass
 
     def create(
         self,
@@ -37,28 +31,9 @@ class FromRegisteredBindingProviderFactory:
         context: InjectionContext[InjectedT],
         cache_provider: bool = True,
     ) -> Provider[InjectedT]:
-        module_path = binding.source_path
-        while module_path:
-            state = context.injection_state
-            if module_path[0] not in state.state_by_module:
-                state.state_by_module[module_path[0]] = InjectionState(
-                    state.provider_creator,
-                    module_path[0].binding_registry,
-                    state.options,
-                    state,
-                )
-            context = context.get_new_state_context(state.state_by_module[module_path[0]])
-            module_path = module_path[1:]
-            if cache_provider:
-                return context.get_provider()
-        return self._create_from_binding(binding, context)
+        pass
 
     def _create_from_binding(
         self, binding: RegisteredBinding[InjectedT], context: InjectionContext[InjectedT]
     ) -> Provider[InjectedT]:
-        for adapter in self._binding_to_provider_adapters:
-            try:
-                return adapter.create(binding, context)
-            except IncompatibleAdapter:
-                pass
-        raise BindingError(f"Could not find a BindingToProviderAdapter for {binding!r}")
+        pass

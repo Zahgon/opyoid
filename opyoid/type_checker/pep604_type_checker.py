@@ -10,7 +10,4 @@ class Pep604TypeChecker(Pep585TypeChecker):
     @staticmethod
     def is_union(target_type: Any) -> bool:
         """Returns True if target_type is Union[<Any>, <Any>...] or Optional[<Any>] or <Any> | <Any>..."""
-        # pylint: disable=no-member
-        return Pep585TypeChecker.is_union(target_type) or isinstance(
-            target_type, types.UnionType  # type: ignore[attr-defined]
-        )
+        pass

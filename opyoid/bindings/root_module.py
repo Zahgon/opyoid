@@ -16,22 +16,8 @@ class RootModule(Module):
         modules: Optional[List[Union[AbstractModule, Type[AbstractModule]]]],
         bindings: Optional[List[Binding[Any]]],
     ) -> None:
-        Module.__init__(self, log_bindings=True)
-        self._injector = injector
-        self._modules = modules or []
-        self._bindings = bindings or []
+        pass
 
     def configure(self) -> None:
         # pylint: disable=import-outside-toplevel
-        from opyoid.injector import Injector
-
-        self.bind(Injector, to_instance=self._injector)
-        self.bind(ImmediateScope, to_instance=ImmediateScope())
-        self.bind(PerLookupScope, to_instance=PerLookupScope())
-        self.bind(SingletonScope, to_instance=SingletonScope())
-        self.bind(ThreadScope, to_instance=ThreadScope())
-        self.bind(ContextScope, to_instance=ContextScope())
-        for module in self._modules:
-            self.install(module)
-        for binding in self._bindings:
-            self._register(binding)
+        pass

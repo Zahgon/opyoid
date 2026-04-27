@@ -16,19 +16,15 @@ class ClassBinding(Binding[InjectedT]):
     _named: Optional[str] = attr.ib(default=None, kw_only=True)
 
     def __attrs_post_init__(self) -> None:
-        if not isinstance(self.bound_class, type):
-            raise BindingError(f"Invalid {self!r}: bound type must be a class, got {self.bound_class!r}")
-        if self.bound_class == self.target_type:
-            raise BindingError(f"Invalid {self!r}: use a SelfBinding to bind a class to itself")
+        pass
 
     @property
     def target_type(self) -> Any:
-        return self._target_type
+        pass
 
     @property
     def named(self) -> Optional[str]:
-        return self._named
+        pass
 
     def __repr__(self) -> str:
-        scope_string = f", scope={self.scope}" if self.scope != SingletonScope else ""
-        return f"{self.__class__.__name__}({self.target!r} -> {get_class_full_name(self.bound_class)}{scope_string})"
+        pass

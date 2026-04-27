@@ -14,11 +14,11 @@ class InstanceBinding(Binding[InjectedT]):
 
     @property
     def target_type(self) -> Union[Type[InjectedT], TypeVar]:
-        return self._target_type
+        pass
 
     @property
     def named(self) -> Optional[str]:
-        return self._named
+        pass
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}({self.target!r} -> {self.bound_instance!r})"
+        pass

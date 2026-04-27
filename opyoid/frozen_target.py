@@ -13,4 +13,4 @@ class FrozenTarget(Generic[InjectedT]):
     named: Optional[str] = None
 
     def __repr__(self) -> str:
-        return f"{get_class_full_name(self.type)}" + (f"#{self.named}" if self.named else "")
+        pass

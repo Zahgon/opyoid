@@ -16,10 +16,4 @@ class ItemBinding(Generic[InjectedT]):
     scope: Union[Type[Scope], object] = attr.ib(default=EMPTY, kw_only=True)
 
     def __repr__(self) -> str:
-        if self.bound_class is not EMPTY:
-            return get_class_full_name(cast(Type[InjectedT], self.bound_class))
-        if self.bound_instance is not EMPTY:
-            return repr(self.bound_instance)
-        if isinstance(self.bound_provider, Provider):
-            return repr(self.bound_provider)
-        return get_class_full_name(cast(Type[InjectedT], self.bound_provider))
+        pass

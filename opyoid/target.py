@@ -15,4 +15,4 @@ class Target(Generic[InjectedT]):
     provider_cache_key: Optional[Any] = None
 
     def __repr__(self) -> str:
-        return f"{get_class_full_name(self.type)}" + (f"#{self.named}" if self.named else "")
+        pass

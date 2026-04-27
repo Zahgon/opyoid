@@ -28,31 +28,10 @@ class ProviderCreator:
     logger = logging.getLogger(__name__)
 
     def __init__(self) -> None:
-        self._provider_factories: List[ProviderFactory] = [
-            FromCacheProviderFactory(),
-            FromEnvVarProviderFactory(),
-            FromBindingProviderFactory(),
-            ListProviderFactory(),
-            ListFromItemsProviderFactory(),
-            SetProviderFactory(),
-            TupleProviderFactory(),
-            UnionProviderFactory(),
-            TypeProviderFactory(),
-            ProviderProviderFactory(),
-            JitProviderFactory(),
-        ]
-        self._lock = RLock()
+        pass
 
     def get_provider(self, context: InjectionContext[InjectedT]) -> Provider[InjectedT]:
-        with self._lock:
-            provider = self._get_provider(context)
-            context.injection_state.provider_registry.set_provider(context.target, provider)
-            return provider
+        pass
 
     def _get_provider(self, context: InjectionContext[InjectedT]) -> Provider[InjectedT]:
-        for provider_factory in self._provider_factories:
-            try:
-                return provider_factory.create(context)
-            except IncompatibleProviderFactory:
-                pass
-        raise NoBindingFound(f"Could not find any bindings for {context.target!r}")
+        pass

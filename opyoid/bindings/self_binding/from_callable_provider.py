@@ -12,17 +12,7 @@ class FromCallableProvider(Provider[InjectedT]):
         args_provider: Optional[Provider[List[Any]]],
         keyword_providers: Dict[str, Provider[Any]],
     ) -> None:
-        self._injected_callable = injected_callable
-        self._positional_providers = positional_providers
-        self._args_provider = args_provider
-        self._keyword_providers = keyword_providers
+        pass
 
     def get(self) -> InjectedT:
-        args = [positional_provider.get() for positional_provider in self._positional_providers]
-        if self._args_provider:
-            args += self._args_provider.get()
-        kwargs = {arg_name: keyword_provider.get() for arg_name, keyword_provider in self._keyword_providers.items()}
-        return self._injected_callable(
-            *args,
-            **kwargs,
-        )
+        pass

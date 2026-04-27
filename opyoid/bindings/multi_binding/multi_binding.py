@@ -18,13 +18,11 @@ class MultiBinding(Binding[List[InjectedT]]):
 
     @property
     def target_type(self) -> Union[Type[List[InjectedT]], TypeVar]:
-        return List[self.item_target_type]  # type: ignore[name-defined]
+        pass
 
     @property
     def named(self) -> Optional[str]:
-        return self._named
+        pass
 
     def __repr__(self) -> str:
-        items_string = ", ".join(f"{item!r}" for item in self.item_bindings)
-        scope_string = f", scope={self.scope}" if self.scope != SingletonScope else ""
-        return f"{self.__class__.__name__}({self.target!r} -> [{items_string}]{scope_string})"
+        pass

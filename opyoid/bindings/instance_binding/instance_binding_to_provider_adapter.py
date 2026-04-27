@@ -14,6 +14,4 @@ class InstanceBindingToProviderAdapter(BindingToProviderAdapter):
     def create(
         self, binding: RegisteredBinding[InjectedT], context: InjectionContext[InjectedT]
     ) -> Provider[InjectedT]:
-        if isinstance(binding.raw_binding, InstanceBinding):
-            return FromInstanceProvider(binding.raw_binding.bound_instance)
-        raise IncompatibleAdapter
+        pass

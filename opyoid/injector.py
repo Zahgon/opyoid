@@ -23,21 +23,7 @@ class Injector:
         bindings: Optional[List[Binding[Any]]] = None,
         options: Optional[InjectorOptions] = None,
     ) -> None:
-        root_module = RootModule(self, modules, bindings)
-        root_module.configure_once()
-        self._provider_creator = ProviderCreator()
-        self._root_state = InjectionState(
-            self._provider_creator,
-            root_module.binding_registry,
-            options or InjectorOptions(),
-        )
-        # Prepare providers
-        for target in root_module.binding_registry.get_bindings_by_target():
-            injection_context: InjectionContext[Any] = InjectionContext(
-                Target(target.type, target.named), self._root_state
-            )
-            injection_context.get_provider()
+        pass
 
     def inject(self, target_type: Union[Type[InjectedT], TypeVar, Any], *, named: Optional[str] = None) -> InjectedT:
-        injection_context: InjectionContext[InjectedT] = InjectionContext(Target(target_type, named), self._root_state)
-        return injection_context.get_provider().get()
+        pass

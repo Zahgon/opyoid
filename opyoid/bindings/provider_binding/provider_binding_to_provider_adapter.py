@@ -17,32 +17,9 @@ class ProviderBindingToProviderAdapter(BindingToProviderAdapter):
     """Creates a Provider from a ProviderBinding."""
 
     def __init__(self) -> None:
-        BindingToProviderAdapter.__init__(self)
-        self._adapter = CallableToProviderAdapter()
+        pass
 
     def create(
         self, binding: RegisteredBinding[InjectedT], context: InjectionContext[InjectedT]
     ) -> Provider[InjectedT]:
-        if not isinstance(binding.raw_binding, ProviderBinding):
-            raise IncompatibleAdapter
-        if isinstance(binding.raw_binding.bound_provider, Provider):
-            return binding.raw_binding.bound_provider
-        if not isinstance(binding.raw_binding.bound_provider, type):
-            context.target.provider_cache_key = binding.raw_binding.bound_provider
-            return self._adapter.create(binding.raw_binding.bound_provider, context, binding.raw_binding.scope)
-        bound_provider = cast(Type[Provider[InjectedT]], binding.raw_binding.bound_provider)
-        provider_target: Target[Provider[InjectedT]] = Target(bound_provider, binding.raw_binding.named)
-        provider_context = context.get_child_context(provider_target)
-        provider_provider = provider_context.get_provider()
-        unscoped_provider = FromProviderProvider(
-            provider_provider,
-        )
-        scope_context: InjectionContext[Scope] = context.get_child_context(Target(binding.raw_binding.scope))
-        try:
-            scope_provider = scope_context.get_provider()
-        except NoBindingFound:
-            raise NonInjectableTypeError(
-                f"Could not create a provider for {binding}: they are no bindings for"
-                f"the scope {binding.raw_binding.scope}"
-            ) from None
-        return scope_provider.get().get_scoped_provider(unscoped_provider)
+        pass

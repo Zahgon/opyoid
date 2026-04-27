@@ -14,11 +14,4 @@ class TupleProviderFactory(ProviderFactory):
     """Creates a Provider that groups the target tuple items providers."""
 
     def create(self, context: InjectionContext[InjectedT]) -> Provider[InjectedT]:
-        if TypeChecker.is_tuple(context.target.type):
-            new_target: Target[List[InjectedT]] = Target(
-                List[context.target.type.__args__[0]],  # type: ignore[name-defined]
-                context.target.named,
-            )
-            new_context = context.get_child_context(new_target)
-            return FromCallableProvider(cast(Callable[..., InjectedT], tuple), [new_context.get_provider()], None, {})
-        raise IncompatibleProviderFactory
+        pass

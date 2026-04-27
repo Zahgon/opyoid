@@ -20,4 +20,4 @@ class Binding(Generic[InjectedT]):
 
     @property
     def target(self) -> FrozenTarget[InjectedT]:
-        return FrozenTarget(self.target_type, self.named)
+        pass

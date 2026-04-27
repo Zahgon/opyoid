@@ -17,14 +17,9 @@ class SelfBindingToProviderAdapter(BindingToProviderAdapter):
     logger = logging.getLogger(__name__)
 
     def __init__(self) -> None:
-        BindingToProviderAdapter.__init__(self)
-        self._adapter = CallableToProviderAdapter()
+        pass
 
     def create(
         self, binding: RegisteredBinding[InjectedT], context: InjectionContext[InjectedT]
     ) -> Provider[InjectedT]:
-        if isinstance(binding.raw_binding, SelfBinding):
-            target_class = cast(Type[InjectedT], binding.target.type)
-            context.current_class = target_class
-            return self._adapter.create(target_class, context, binding.raw_binding.scope)
-        raise IncompatibleAdapter
+        pass
